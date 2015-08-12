@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER Fabio Rehm "fgrehm@gmail.com"
+FROM ubuntu:14.04.2
+MAINTAINER Sven Fischer
 
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
     apt-get update && apt-get install -y software-properties-common && \
@@ -15,7 +15,7 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
 # the netbeans image
 RUN apt-get update && apt-get install -y libgtk2.0-0 libcanberra-gtk-module
 
-RUN wget http://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/luna/SR1/eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz -O /tmp/eclipse.tar.gz -q && \
+RUN wget http://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/mars/R/eclipse-jee-mars-R-linux-gtk-x86_64.tar.gz -O /tmp/eclipse.tar.gz -q && \
     echo 'Installing eclipse' && \
     tar -xf /tmp/eclipse.tar.gz -C /opt && \
     rm /tmp/eclipse.tar.gz
