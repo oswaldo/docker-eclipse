@@ -1,6 +1,6 @@
 # docker-eclipse
 
-Eclipse v4.4.1 in a Docker container
+Eclipse v4.5.0 in a Docker container
 
 ## Requirements
 
@@ -17,8 +17,8 @@ within the container:
 
 ```sh
 # The image size is currently 1.131 GB, so go grab a coffee while Docker downloads it
-docker pull fgrehm/eclipse:v4.4.1
-L=$HOME/bin/eclipse && curl -sL https://github.com/fgrehm/docker-eclipse/raw/master/eclipse > $L && chmod +x $L
+docker pull oswaldo/eclipse
+L=$HOME/bin/eclipse && curl -sL https://github.com/oswaldo/docker-eclipse/raw/master/eclipse > $L && chmod +x $L
 cd /path/to/java/project
 eclipse
 ```
@@ -28,25 +28,17 @@ kept on your machine (apart from the Docker image of course).
 
 ## Making plugins persist between sessions
 
-Eclipse plugins are kept on `$HOME/.eclipse` inside the container, so if you
-want to keep them around after you close it, you'll need to share it with your
-host.
+Eclipse plugins are kept on `$HOME/.eclipse` inside the container, so 
+to keep them around after you close it, the provided eclipse script does the following:
 
 For example:
 
 ```sh
-mkdir -p .eclipse-docker
 docker run -ti --rm \
            -e DISPLAY=$DISPLAY \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
            -v `pwd`/.eclipse-docker:/home/developer \
            -v `pwd`:/workspace \
-           fgrehm/eclipse:v4.4.1
+	   eclipse
+           oswaldo/eclipse
 ```
-
-## Help! I started the container but I don't see the Eclipse screen
-
-You might have an issue with the X11 socket permissions since the default user
-used by the base image has an user and group ids set to `1000`, in that case
-you can run either create your own base image with the appropriate ids or run
-`xhost +` on your machine and try again.
