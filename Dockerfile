@@ -15,7 +15,7 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
 # the netbeans image
 RUN apt-get update && apt-get install -y libgtk2.0-0 libcanberra-gtk-module
 
-RUN wget http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/mars/R/eclipse-java-mars-R-linux-gtk-x86_64.tar.gz -O /tmp/eclipse.tar.gz -q && \
+RUN wget http://ftp.fau.de/eclipse/technology/epp/downloads/release/mars/1/eclipse-java-mars-1-linux-gtk-x86_64.tar.gz -O /tmp/eclipse.tar.gz -q && \
     echo 'Installing eclipse' && \
     tar -xf /tmp/eclipse.tar.gz -C /opt && \
     rm /tmp/eclipse.tar.gz
