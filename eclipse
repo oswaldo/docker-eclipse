@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# to disallow plugins outside the container remove the line:
+#            -v `pwd`/.eclipse-docker:/home/developer \
+
 docker run -ti --rm \
             -e DISPLAY=$DISPLAY \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
