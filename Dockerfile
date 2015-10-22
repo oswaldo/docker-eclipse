@@ -1,5 +1,8 @@
-FROM ubuntu:15.04
+FROM phusion/baseimage:0.9.17
 MAINTAINER Oswaldo Dantas "oswaldodantas@gmail.com"
+
+# Use baseimage-docker's init system.
+CMD ["/sbin/my_init"]
 
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
     apt-get update && apt-get install -y software-properties-common && \
@@ -53,3 +56,6 @@ USER developer
 ENV HOME /home/developer
 WORKDIR /home/developer
 CMD /usr/local/bin/eclipse
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
