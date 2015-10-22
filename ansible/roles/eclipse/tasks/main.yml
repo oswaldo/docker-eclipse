@@ -1,0 +1,14 @@
+- name: download eclipse
+  sudo: yes
+  get_url:
+    url=http://download.eclipse.org/technology/epp/downloads/release/mars/1/eclipse-java-mars-1-linux-gtk-x86_64.tar.gz
+    dest=/opt/eclipse.tar.gz
+  register: new_archive
+
+- name: install eclipse
+  sudo: yes
+  unarchive:
+    src="/opt/eclipse.tar.gz"
+    dest="/opt"
+    copy=no
+  when: new_archive|changed
