@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Eclipse
+Type=Application
+#Exec=env UBUNTU_MENUPROXY=0 SWT_GTK3=0 /opt/eclipse/eclipse
+Exec=/opt/eclipse/eclipse
+Terminal=false
+Icon=/opt/eclipse/icon.xpm
+Comment=Integrated Development Environment
+NoDisplay=false
+Categories=Development;IDE;
+Name[en]=Eclipse
+X-Desktop-File-Install-Version=0.22
